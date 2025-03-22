@@ -4,7 +4,7 @@ import Timetable from './components/Timetable';
 import AdminPanel from './components/AdminPanel';
 import SearchBar from './components/SearchBar';
 import Announcements from './components/Announcements';
-import { FaSun, FaMoon } from 'react-icons/fa';  // Importing icons for Dark Mode Toggle
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 function App() {
     const [timetable, setTimetable] = useState(() => {
@@ -23,6 +23,7 @@ function App() {
     });
 
     const [showAnnouncements, setShowAnnouncements] = useState(false);
+    const [showTimetable, setShowTimetable] = useState(false);
 
     useEffect(() => {
         localStorage.setItem('timetable', JSON.stringify(timetable));
@@ -34,21 +35,15 @@ function App() {
 
     useEffect(() => {
         localStorage.setItem('darkMode', JSON.stringify(darkMode));
-        document.body.className = darkMode ? 'dark-mode' : '';  // Apply dark mode class to body
+        document.body.className = darkMode ? 'dark-mode' : '';
     }, [darkMode]);
-
-    const handleEdit = (index) => {
-        const entryToEdit = timetable[index];
-        setTimetable(prev => prev.filter((_, i) => i !== index));
-        setTimeout(() => setTimetable(prev => [entryToEdit, ...prev]), 0);
-    };
 
     const handleDelete = (index) => {
         const updatedTimetable = timetable.filter((_, i) => i !== index);
         setTimetable(updatedTimetable);
     };
 
-    const filteredTimetable = timetable.filter(entry => 
+    const filteredTimetable = timetable.filter(entry =>
         entry.course.toLowerCase().includes(searchQuery.toLowerCase()) ||
         entry.day.toLowerCase().includes(searchQuery.toLowerCase()) ||
         entry.venue.toLowerCase().includes(searchQuery.toLowerCase())
@@ -57,7 +52,7 @@ function App() {
     return (
         <div className="App">
             <h1>Class Timetable & Update App</h1>
-            
+
             {/* Modern Dark Mode Toggle */}
             <div className="toggle-container">
                 <div 
@@ -72,9 +67,14 @@ function App() {
                 <span>{darkMode ? 'Dark Mode' : 'Light Mode'}</span>
             </div>
 
-            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-            <AdminPanel timetable={timetable} setTimetable={setTimetable} />
-            
+            {/* Timetable Toggle Handle */}
+            <div 
+                className={`timetable-handle ${showTimetable ? 'active' : ''}`} 
+                onClick={() => setShowTimetable(!showTimetable)}
+            >
+                {showTimetable ? 'Hide Timetable' : 'Show Timetable'}
+            </div>
+
             {/* Announcement Handle */}
             <div 
                 className={`announcement-handle ${showAnnouncements ? 'active' : ''}`} 
@@ -90,7 +90,18 @@ function App() {
                 </div>
             )}
 
-            <Timetable timetable={filteredTimetable} onEdit={handleEdit} onDelete={handleDelete} />
+            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+
+            <AdminPanel timetable={timetable} setTimetable={setTimetable} />
+
+            {showTimetable && (
+                <div className="timetable-box animated-slide-in">
+                    <Timetable 
+                        timetable={filteredTimetable} 
+                        onDelete={handleDelete} 
+                    />
+                </div>
+            )}
         </div>
     );
 }

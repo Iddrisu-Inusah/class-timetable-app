@@ -1,19 +1,15 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  transition: background-color 0.5s, color 0.5s;
+  font-family: Arial, sans-serif;
+  background-color: #8b8a8a;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Light Mode Styling */
-body {
-  background-color: #f0f0f0;
-  color: #000;
-}
-
-/* Dark Mode Styling */
+/* Dark Mode */
 body.dark-mode {
-  background-color: #1b1b1b;
+  background-color: #121212;
   color: #e0e0e0;
 }
 
@@ -28,17 +24,16 @@ body.dark-mode {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-/* Toggle Switch Styling */
+/* Toggle Switch */
 .toggle-switch {
   position: relative;
   width: 60px;
   height: 30px;
-  background-color: #ccc;
-  border-radius: 25px;
-  margin-right: 10px;
+  background-color: #888;
+  border-radius: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -66,80 +61,40 @@ body.dark-mode {
   transform: translateX(30px);
 }
 
-/* Icon Styling */
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 4px;
-  left: 5px;
-  transition: transform 0.4s;
-}
-
-.icon.sun {
-  color: #f5d442;
-  transform: rotate(0deg);
-}
-
-.icon.moon {
-  color: #f5f5f5;
-  transform: rotate(180deg);
-}
-
-/* Announcement Handle Button */
-.announcement-handle {
+/* Announcement Handle */
+.announcement-handle
+ {
   padding: 10px 20px;
+  background: linear-gradient(45deg, #4CAF50, #66BB6A);
+  color: white;
   border: none;
-  border-radius: 4px;
-  background-color: #4CAF50;
-  color: white;
+  border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  margin: 10px;
   position: fixed;
   top: 10px;
   right: 10px;
   z-index: 1000;
 }
 
-.announcement-handle:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
-}
-
-/* Announcement Box */
-.announcement-box {
-  margin-top: 15px;
-  padding: 15px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  transition: background-color 0.3s;
-}
-
-body.dark-mode .announcement-box {
-  background-color: #2b2b2b;
-  color: #e0e0e0;
-}
-/* Animated Announcement Handle */
-.announcement-handle {
+.timetable-handle {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background: linear-gradient(45deg, #4CAF50, #66BB6A);
   color: white;
-  border-radius: 30px;
+  border: none;
+  border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  margin: 10px;
   position: fixed;
   top: 10px;
-  right: 10px;
+  left: 10px;
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  animation: fadeIn 0.5s;
+   /* Positioned next to the announcement handle */
 }
 
-.announcement-handle:hover {
+.announcement-handle:hover, .timetable-handle:hover {
   background-color: #45a049;
   transform: scale(1.05);
 }
@@ -151,29 +106,63 @@ body.dark-mode .announcement-box {
   padding: 2px 8px;
   border-radius: 50%;
   font-size: 0.8em;
+  margin-right: 8px;
 }
 
-/* Animated Slide-In Box */
+/* Announcement Box */
 .announcement-box {
-  margin-top: 15px;
+  margin-top: 20px;
   padding: 15px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  transition: background-color 0.3s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.4s forwards;
 }
 
 body.dark-mode .announcement-box {
-  background-color: #2b2b2b;
-  color: #e0e0e0;
+  background-color: #1e1e1e;
+}
+
+/* Timetable Box */
+.timetable-box {
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+body.dark-mode .timetable-box {
+  background-color: #1e1e1e;
 }
 
 /* Slide-In Animation */
-.animated-slide-in {
-  animation: slideIn 0.5s forwards;
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+/* Message Alignment */
+.message-admin {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border-radius: 12px 12px 0 12px;
+  margin: 10px;
+  text-align: right;
+  max-width: 70%;
+  float: right;
+  clear: both;
+}
+
+.message-user {
+  background-color: #ddd;
+  color: black;
+  padding: 10px;
+  border-radius: 12px 12px 12px 0;
+  margin: 10px;
+  text-align: left;
+  max-width: 70%;
+  float: left;
+  clear: both;
 }
