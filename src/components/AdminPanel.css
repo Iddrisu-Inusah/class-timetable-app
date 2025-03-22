@@ -1,0 +1,65 @@
+/* Admin Panel Styling */
+.admin-panel {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    width: 80%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .admin-panel {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+}
+
+/* Form Styling */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: fadeIn 0.5s;
+}
+
+.admin-form input {
+    padding: 10px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .admin-form input {
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+/* Add Button Styling */
+.admin-form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.admin-form button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Error Message Styling */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

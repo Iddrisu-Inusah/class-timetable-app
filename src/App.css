@@ -1,0 +1,179 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* Light Mode Styling */
+body {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+/* Dark Mode Styling */
+body.dark-mode {
+  background-color: #1b1b1b;
+  color: #e0e0e0;
+}
+
+/* App Container */
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Toggle Container */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/* Toggle Switch Styling */
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  transition: background-color 0.3s;
+}
+
+.toggle-switch.active {
+  background-color: #4CAF50;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+.toggle-slider.active {
+  transform: translateX(30px);
+}
+
+/* Icon Styling */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  transition: transform 0.4s;
+}
+
+.icon.sun {
+  color: #f5d442;
+  transform: rotate(0deg);
+}
+
+.icon.moon {
+  color: #f5f5f5;
+  transform: rotate(180deg);
+}
+
+/* Announcement Handle Button */
+.announcement-handle {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.announcement-handle:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Announcement Box */
+.announcement-box {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+}
+
+body.dark-mode .announcement-box {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+/* Animated Announcement Handle */
+.announcement-handle {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeIn 0.5s;
+}
+
+.announcement-handle:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Notification Badge */
+.notification-badge {
+  background-color: red;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 50%;
+  font-size: 0.8em;
+}
+
+/* Animated Slide-In Box */
+.announcement-box {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s;
+}
+
+body.dark-mode .announcement-box {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+
+/* Slide-In Animation */
+.animated-slide-in {
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
